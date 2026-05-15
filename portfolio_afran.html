@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD. Afranuzzaman Shourov — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0f14;
+    --bg2: #13161e;
+    --bg3: #1a1e2a;
+    --card: #181c27;
+    --border: rgba(255,255,255,0.07);
+    --accent: #4fffb0;
+    --accent2: #38d9ff;
+    --text: #f0f0f0;
+    --muted: #8a90a0;
+    --serif: 'DM Serif Display', serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,15,20,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 0.85rem;
+    letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 2rem 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(79,255,176,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,255,176,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,255,176,0.06) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; text-align: center; max-width: 780px; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(79,255,176,0.1);
+    border: 1px solid rgba(79,255,176,0.25);
+    color: var(--accent);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  h1.hero-name {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 1rem;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  h1.hero-name span { color: var(--accent); font-style: italic; }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 2rem;
+    animation: fadeUp 0.7s 0.2s ease both;
+    font-weight: 300;
+  }
+  .hero-ctas {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--accent); color: #0d0f14;
+    padding: 12px 28px; border-radius: 8px;
+    font-weight: 600; font-size: 0.9rem;
+    text-decoration: none; transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover { background: #38ffb0; transform: translateY(-2px); }
+  .btn-outline {
+    border: 1px solid var(--border); color: var(--text);
+    padding: 12px 28px; border-radius: 8px;
+    font-weight: 400; font-size: 0.9rem;
+    text-decoration: none; transition: all 0.2s;
+    background: transparent;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  /* SECTIONS */
+  section { padding: 100px 2rem; max-width: 1000px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 0.5rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, rgba(79,255,176,0.3), transparent);
+    max-width: 120px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--text);
+    margin-bottom: 3rem;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+  }
+  .about-text { font-size: 1rem; color: var(--muted); line-height: 1.9; font-weight: 300; }
+  .about-text p + p { margin-top: 1.2rem; }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: rgba(79,255,176,0.25); }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2rem; color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.04em; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
+  .skill-group {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-group:hover { border-color: rgba(56,217,255,0.3); transform: translateY(-3px); }
+  .skill-group-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .skill-group-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent2); font-weight: 600; margin-bottom: 0.75rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.78rem; padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  .project-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .project-card:hover { border-color: rgba(79,255,176,0.2); transform: translateY(-4px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-num { font-size: 0.7rem; color: var(--accent); font-weight: 600; letter-spacing: 0.08em; margin-bottom: 0.75rem; opacity: 0.7; }
+  .project-title { font-family: var(--serif); font-size: 1.3rem; color: var(--text); margin-bottom: 0.5rem; }
+  .project-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem; flex: 1; font-weight: 300; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+  .stack-tag {
+    background: rgba(56,217,255,0.08);
+    border: 1px solid rgba(56,217,255,0.2);
+    color: var(--accent2);
+    font-size: 0.73rem; padding: 3px 10px;
+    border-radius: 100px; font-weight: 500;
+  }
+
+  /* EXPERIENCE */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 8px; bottom: 0;
+    width: 1px; background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+  .timeline-item { position: relative; margin-bottom: 2.5rem; }
+  .timeline-dot {
+    position: absolute; left: -2rem; top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%; background: var(--accent);
+    transform: translateX(-4px);
+    box-shadow: 0 0 10px rgba(79,255,176,0.4);
+  }
+  .timeline-meta {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 0.3rem; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .timeline-role { font-weight: 600; font-size: 1rem; color: var(--text); }
+  .timeline-date { font-size: 0.78rem; color: var(--accent); background: rgba(79,255,176,0.08); padding: 3px 10px; border-radius: 100px; }
+  .timeline-company { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; }
+  .timeline-list { list-style: none; padding: 0; }
+  .timeline-list li { font-size: 0.88rem; color: var(--muted); font-weight: 300; padding: 2px 0 2px 14px; position: relative; }
+  .timeline-list li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; gap: 1rem; }
+  .edu-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.5rem;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 1rem; transition: border-color 0.2s;
+  }
+  .edu-card:hover { border-color: rgba(79,255,176,0.2); }
+  .edu-degree { font-weight: 600; font-size: 0.95rem; color: var(--text); margin-bottom: 4px; }
+  .edu-inst { font-size: 0.85rem; color: var(--muted); font-weight: 300; }
+  .edu-year { font-size: 0.78rem; color: var(--accent); white-space: nowrap; background: rgba(79,255,176,0.08); padding: 4px 12px; border-radius: 100px; }
+
+  /* CONTACT */
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+  }
+  .contact-text { font-size: 1rem; color: var(--muted); font-weight: 300; line-height: 1.9; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1rem 1.25rem;
+    text-decoration: none; color: var(--text);
+    font-size: 0.9rem; transition: border-color 0.2s, transform 0.2s;
+  }
+  .contact-link:hover { border-color: rgba(79,255,176,0.3); transform: translateX(4px); }
+  .contact-link-icon { font-size: 1.1rem; color: var(--accent); width: 22px; text-align: center; }
+  .contact-link-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; display: block; }
+  .contact-link-val { font-size: 0.9rem; color: var(--text); }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 3rem 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 0.8rem; font-weight: 300;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 700px) {
+    .about-grid, .contact-inner { grid-template-columns: 1fr; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Afran.</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="padding-top:0; max-width:100%;">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <span class="hero-tag">CSE Student &amp; Aspiring Developer</span>
+    <h1 class="hero-name">MD. <span>Afranuzzaman</span><br>Shourov</h1>
+    <p class="hero-sub">Versatile engineer with a passion for tech, leadership, and building things that matter — from smart energy platforms to career tools for students.</p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">01 &nbsp; About</div>
+  <h2 class="section-title reveal">A bit about me</h2>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>I'm a Computer Science &amp; Engineering student at United International University, Dhaka, with a background spanning tech, logistics, media, and community leadership.</p>
+      <p>I enjoy solving real-world problems through code and coordination — whether that's building platforms that help students find jobs, designing smart energy systems, or managing events for hundreds of participants.</p>
+      <p>Outside of tech, I love traveling, photography, video making, and sports. I believe the best engineers are well-rounded humans first.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Projects Built</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Years Work Exp.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Students Mentored</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Clubs &amp; Activities</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">02 &nbsp; Skills</div>
+  <h2 class="section-title reveal">What I bring to the table</h2>
+  <div class="skills-grid reveal">
+    <div class="skill-group">
+      <div class="skill-group-icon">💻</div>
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag">HTML</span>
+        <span class="skill-tag">CSS</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">C</span>
+        <span class="skill-tag">C++</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-icon">⚙️</div>
+      <div class="skill-group-title">Tech Stack</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Bootstrap</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">PHP</span>
+        <span class="skill-tag">TensorFlow.js</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-icon">🎨</div>
+      <div class="skill-group-title">Design &amp; Media</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Framer</span>
+        <span class="skill-tag">Adobe Premiere</span>
+        <span class="skill-tag">MS Office</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-icon">🤝</div>
+      <div class="skill-group-title">Soft Skills</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Team Coordination</span>
+        <span class="skill-tag">Public Speaking</span>
+        <span class="skill-tag">Event Planning</span>
+        <span class="skill-tag">Resource Mgmt</span>
+        <span class="skill-tag">Problem Solving</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">03 &nbsp; Projects</div>
+  <h2 class="section-title reveal">Things I've built</h2>
+  <div class="projects-grid reveal">
+    <div class="project-card">
+      <div class="project-num">PROJECT 01</div>
+      <div class="project-title">EnergiNet</div>
+      <div class="project-desc">Smart Energy Management and Trading Platform designed to optimize energy consumption and promote sustainable energy trading. Targets apartment residents and is currently in active development.</div>
+      <div class="project-stack">
+        <span class="stack-tag">TensorFlow.js</span>
+        <span class="stack-tag">Node.js</span>
+        <span class="stack-tag">MongoDB</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">PROJECT 02</div>
+      <div class="project-title">Intern Insight</div>
+      <div class="project-desc">A platform connecting job seekers with relevant internship and employment opportunities in Bangladesh. Helps fresh graduates find jobs and streamlines HR recruitment processes.</div>
+      <div class="project-stack">
+        <span class="stack-tag">JavaScript</span>
+        <span class="stack-tag">Bootstrap</span>
+        <span class="stack-tag">MySQL</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">PROJECT 03</div>
+      <div class="project-title">Pet Shop</div>
+      <div class="project-desc">A web-based platform to manage and showcase pet products and services. Built for cat, dog, and bird lovers, providing a simple and efficient browsing and management experience.</div>
+      <div class="project-stack">
+        <span class="stack-tag">CSS</span>
+        <span class="stack-tag">PHP</span>
+        <span class="stack-tag">MySQL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">04 &nbsp; Experience</div>
+  <h2 class="section-title reveal">Where I've worked</h2>
+  <div class="timeline reveal">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-role">Junior Executive, Logistics</span>
+        <span class="timeline-date">2022</span>
+      </div>
+      <div class="timeline-company">QCOOM Limited — Pragati Sarani, Badda, Dhaka</div>
+      <ul class="timeline-list">
+        <li>Maintained accurate records of stock, supplies, and equipment</li>
+        <li>Tracked incoming and outgoing materials</li>
+        <li>Assisted in planning transport routes and schedules</li>
+        <li>Maintained records of purchase orders, delivery notes, and invoices</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-role">Intern</span>
+        <span class="timeline-date">2019</span>
+      </div>
+      <div class="timeline-company">Bangladesh Betar — Agargaon</div>
+      <ul class="timeline-list">
+        <li>Researched topics and collected news, interviews, and program-relevant stories</li>
+        <li>Gained foundational knowledge in media, journalism, and communication</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-role">Executive Associate</span>
+        <span class="timeline-date">Present</span>
+      </div>
+      <div class="timeline-company">UIU Skill Development Forum</div>
+      <ul class="timeline-list">
+        <li>Managed recruitment, training, and team-building activities for 50+ students</li>
+        <li>Organized career workshops and networking sessions to facilitate job placements</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-role">Executive</span>
+        <span class="timeline-date">Present</span>
+      </div>
+      <div class="timeline-company">UIU Computer Club</div>
+      <ul class="timeline-list">
+        <li>Helped onboard new members through registration and orientation</li>
+        <li>Collaborated with faculty advisors, IT department, and sponsors</li>
+        <li>Responded to member queries and feedback</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">05 &nbsp; Education</div>
+  <h2 class="section-title reveal">Academic background</h2>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <div>
+        <div class="edu-degree">B.Sc. in Computer Science &amp; Engineering</div>
+        <div class="edu-inst">United International University — United City, Dhaka</div>
+      </div>
+      <span class="edu-year">2019 – Present</span>
+    </div>
+    <div class="edu-card">
+      <div>
+        <div class="edu-degree">Diploma in Electrical Technology</div>
+        <div class="edu-inst">Institute of Science Trade &amp; Technology, Dhaka &nbsp;·&nbsp; CGPA 2.92</div>
+      </div>
+      <span class="edu-year">2013 – 2019</span>
+    </div>
+    <div class="edu-card">
+      <div>
+        <div class="edu-degree">Secondary School Certificate</div>
+        <div class="edu-inst">Shaheed Police Smrity College, Mirpur, Dhaka &nbsp;·&nbsp; GPA 4.88</div>
+      </div>
+      <span class="edu-year">2001 – 2011</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">06 &nbsp; Contact</div>
+  <h2 class="section-title reveal">Let's connect</h2>
+  <div class="contact-inner reveal">
+    <div class="contact-text">
+      <p>I'm open to internship opportunities, collaborative projects, and conversations about tech. Feel free to reach out through any of the channels below.</p>
+      <p style="margin-top:1.2rem;">Based in Dhaka, Bangladesh 🇧🇩</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:afranshourov@gmail.com" class="contact-link">
+        <span class="contact-link-icon">✉</span>
+        <div>
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-val">afranshourov@gmail.com</span>
+        </div>
+      </a>
+      <a href="tel:01770044739" class="contact-link">
+        <span class="contact-link-icon">📞</span>
+        <div>
+          <span class="contact-link-label">Phone</span>
+          <span class="contact-link-val">01770044739</span>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/mdafranuzzamanshourov" target="_blank" class="contact-link">
+        <span class="contact-link-icon">in</span>
+        <div>
+          <span class="contact-link-label">LinkedIn</span>
+          <span class="contact-link-val">mdafranuzzamanshourov</span>
+        </div>
+      </a>
+      <a href="https://github.com/afranshourov" target="_blank" class="contact-link">
+        <span class="contact-link-icon">⌥</span>
+        <div>
+          <span class="contact-link-label">GitHub</span>
+          <span class="contact-link-val">afranshourov</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; built for MD. Afranuzzaman Shourov &nbsp;·&nbsp; Dhaka, Bangladesh</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
